@@ -1,4 +1,5 @@
 import br.com.alura.screenmatch.modelos.Filme;
+import br.com.alura.screenmatch.modelos.Serie;
 
 public class Principal {
     static void main(String[] args) {
@@ -6,6 +7,7 @@ public class Principal {
         meuFilme.setNome("O poderoso chefao");
         meuFilme.setAnoLancamento(1978);
         meuFilme.setDucacaoEmMinutos( 180);
+        System.out.println("Duracao do filme: " + meuFilme.getDucacaoEmMinutos());
 
         meuFilme.exibeFichaTecnica();
         meuFilme.avalia(8);
@@ -18,5 +20,15 @@ public class Principal {
         //meuFilme.somaDasAvaliacoes = 10;
         //meuFilme.totalDeAvaliacoes = 1;
         //System.out.println(meuFilme.pegaMedia());
+
+        Serie minhaSerie = new Serie();
+        minhaSerie.setNome("Breaking bad");
+        minhaSerie.setAnoLancamento(2008);
+        minhaSerie.exibeFichaTecnica();
+        minhaSerie.setTemporadas(5);
+        minhaSerie.setEpisodiosPorTemporada(12);
+        minhaSerie.setMinutosPorEpisodio(50);
+        System.out.println("Duracao do filme: " + meuFilme.getDucacaoEmMinutos());
+
     }
 }
