@@ -1,3 +1,4 @@
+import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 
@@ -28,7 +29,11 @@ public class Principal {
         minhaSerie.setTemporadas(5);
         minhaSerie.setEpisodiosPorTemporada(12);
         minhaSerie.setMinutosPorEpisodio(50);
-        System.out.println("Duracao do filme: " + meuFilme.getDucacaoEmMinutos());
+        System.out.println("Duracao para maratonar Breaking bad: " + minhaSerie.getDucacaoEmMinutos());
 
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+        calculadora.inclui(meuFilme);
+        calculadora.inclui(minhaSerie);
+        System.out.println(calculadora.getTempoTotal());
     }
 }
