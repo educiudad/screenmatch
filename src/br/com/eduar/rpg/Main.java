@@ -19,7 +19,7 @@ public class Main {
 
 
         jogador.setVidaMaxima(40);
-        inimigo.setVidaMaxima(90);1
+        inimigo.setVidaMaxima(90);
         while (jogador.estaVivo() && inimigo.estaVivo()) {
             System.out.println("sua vida:" + jogador.getVida());
             System.out.println("vida do seu inimigo:" + inimigo.getVida());

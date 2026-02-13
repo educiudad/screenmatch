@@ -44,6 +44,11 @@ public class Titulo {
         this.ducacaoEmMinutos = ducacaoEmMinutos;
     }
 
+    public Titulo(String nome, int anoLancamento) {
+        this.nome = nome;
+        this.anoLancamento = anoLancamento;
+    }
+
     public void exibeFichaTecnica(){
         System.out.println(nome);
         System.out.println(anoLancamento);
