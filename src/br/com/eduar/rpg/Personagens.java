@@ -2,11 +2,18 @@ package br.com.eduar.rpg;
 
 public class Personagens {
     private String nome;
-    private int vida = 1;
+    private int vida;
     private int dano;
     private int vidaMaxima;
     private int curasRestantes;
 
+    public Personagens(String nome, int dano, int vidaMaxima, int curasRestantes){
+        this.nome = nome;
+        this.dano = dano;
+        this.vidaMaxima = vidaMaxima;
+        this.curasRestantes = curasRestantes;
+        this.vida = vidaMaxima; // obrigatório
+    }
 
     public String getNome() {
         return nome;
@@ -67,7 +74,7 @@ public class Personagens {
 
     public boolean curar() {
         if (curasRestantes > 0) {
-            int valorCura = 15;
+            int valorCura = 50;
             this.vida += valorCura;
 
             if (this.vida > this.vidaMaxima) {
@@ -79,6 +86,11 @@ public class Personagens {
         } else {
             return false;
         }
+    }
+
+
+    public int getVidaMaxima() {
+        return vidaMaxima;
     }
 }
 

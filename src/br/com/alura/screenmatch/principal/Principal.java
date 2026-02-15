@@ -1,3 +1,5 @@
+package br.com.alura.screenmatch.principal;
+
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
@@ -30,7 +32,7 @@ public class Principal {
         //meuFilme.totalDeAvaliacoes = 1;
         //System.out.println(meuFilme.pegaMedia());
 
-        Serie minhaSerie = new Serie("O poderoso chefao", 2008);
+        Serie minhaSerie = new Serie("Breaking bad", 2008);
 
         minhaSerie.exibeFichaTecnica();
         minhaSerie.setTemporadas(5);
@@ -59,15 +61,15 @@ public class Principal {
         filmeEduardo.setDucacaoEmMinutos(200);
         filmeEduardo.avalia(10);
 
-        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
-        listaDeFilmes.add(meuFilme);
-        listaDeFilmes.add(outroFilme);
-        listaDeFilmes.add(filmeEduardo);
+        ArrayList<Filme> lista = new ArrayList<>();
+        lista.add(meuFilme);
+        lista.add(outroFilme);
+        lista.add(filmeEduardo);
 
-        System.out.println("tamanho da lista "+ listaDeFilmes.size());
-        System.out.println("Primeiro filme "+ listaDeFilmes.get(0).getNome());
-        System.out.println("Primeiro filme "+ listaDeFilmes.get(0).toString());
-        System.out.println(listaDeFilmes);
+        System.out.println("tamanho da lista "+ lista.size());
+        System.out.println("Primeiro filme "+ lista.get(0).getNome());
+        System.out.println("Primeiro filme "+ lista.get(0).toString());
+        System.out.println(lista);
 
 
     }

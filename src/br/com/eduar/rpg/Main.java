@@ -1,69 +1,104 @@
 package br.com.eduar.rpg;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Personagens jogador = new Personagens();
-        Personagens inimigo = new Personagens();
         Scanner sc = new Scanner(System.in);
 
+        Personagens personagen1 = new Personagens("Victor LOpes", 40, 100, 5);
+        Personagens personagen2 = new Personagens("Joao gabriel", 20, 120, 1);
+        Personagens personagen3 = new Personagens("Eduardo sonego", 15, 200, 3);
+        Personagens personagen4 = new Personagens("Eduardo Ciudad", 300, 10000, 0);
 
-        jogador.setNome("Victor Lopes");
-        jogador.setDano(10);
-        jogador.setVida(40);
-        jogador.setcurasRestantes(3);
-        inimigo.setNome("Eduardo sonego");
-        inimigo.setDano(7);
-        inimigo.setVida(90);
+        ArrayList<Personagens> personagensJogaveis = new ArrayList<>();
 
+        personagensJogaveis.add(personagen1);
+        personagensJogaveis.add(personagen2);
+        personagensJogaveis.add(personagen3);
+        personagensJogaveis.add(personagen4);
 
-        jogador.setVidaMaxima(40);
-        inimigo.setVidaMaxima(90);
-        while (jogador.estaVivo() && inimigo.estaVivo()) {
-            System.out.println("sua vida:" + jogador.getVida());
-            System.out.println("vida do seu inimigo:" + inimigo.getVida());
-
-
-            System.out.println("O que você deseja fazer?");
-            System.out.println("1 - Atacar");
-            System.out.println("2 - Curar(curas restantes: " + jogador.getcurasRestantes() + ")");
-            int escolha = sc.nextInt();
+        System.out.println("===== ESCOLHA SEU HERÓI =====");
+        System.out.println("1 - Victor LOpes");
+        System.out.println("2 - Joao Gabriel");
+        System.out.println("3 - Eduardo sonego");
 
 
-            if (escolha == 1) {
-                int danoCausado = jogador.atacar(inimigo);
-                System.out.println(
-                        jogador.getNome() + " atacou " + inimigo.getNome() + " e causou " + danoCausado + " de dano"
-                );
 
-            } else if (escolha == 2) {
 
-                boolean curou = jogador.curar();
-                if (curou) {
-                    System.out.println("Você se curou!");
-                } else {
-                    System.out.println("Você não tem mais curas disponíveis!");
-                }
+        int escolha = sc.nextInt();
 
-            } else {
-                System.out.println("Opção inválida");
-                continue;
+
+        Personagens jogador = personagensJogaveis.get(escolha - 1);
+
+
+
+        ArrayList<Personagens> inimigos = new ArrayList<>();
+
+        for (int i = 0; i < personagensJogaveis.size(); i++) {
+            if (i != escolha - 1) {
+                inimigos.add(personagensJogaveis.get(i));
             }
-
-            if(jogador.estaVivo()) {
-                int danoInimigo = inimigo.atacar(jogador);
-                System.out.println(
-                        inimigo.getNome() + " atacou " + jogador.getNome() + " e causou " + danoInimigo + " de dano"
-                );
-            }
-
         }
 
-        if  (jogador.estaVivo()) {
-            System.out.println("🎉 PARABÉNS! Você venceu a batalha!");
-        } else {
-            System.out.println("☠️ VOCÊ FOI DERROTADO!");
+
+        for (Personagens inimigoAtual : inimigos) {
+
+            System.out.println("\n==============================");
+            System.out.println("Um novo inimigo apareceu: " + inimigoAtual.getNome());
+            System.out.println("==============================");
+
+
+
+            inimigoAtual.setVida(inimigoAtual.getVidaMaxima());
+
+            while (jogador.estaVivo() && inimigoAtual.estaVivo()) {
+
+                System.out.println("Sua vida: " + jogador.getVida());
+                System.out.println("Vida do inimigo: " + inimigoAtual.getVida());
+
+                System.out.println("1 - Atacar");
+                System.out.println("2 - Curar (curas restantes: " + jogador.getcurasRestantes() + ")");
+
+                int acao = sc.nextInt();
+
+                if (acao == 1) {
+                    int danoCausado = jogador.atacar(inimigoAtual);
+                    System.out.println(jogador.getNome() + " causou " + danoCausado + " de dano");
+
+                } else if (acao == 2) {
+
+                    if (jogador.curar()) {
+                        System.out.println("Você se curou!");
+                    } else {
+                        System.out.println("Sem curas!");
+                    }
+
+                } else {
+                    System.out.println("Opção inválida");
+                    continue;
+                }
+
+
+                if (inimigoAtual.estaVivo()) {
+                    int dano = inimigoAtual.atacar(jogador);
+                    System.out.println(inimigoAtual.getNome() + " te causou " + dano + " de dano");
+                }
+            }
+
+
+            if (!jogador.estaVivo()) {
+                System.out.println("\n☠️ VOCÊ FOI DERROTADO MOGGADO PELO MOGGADOR EDUARDO CIUDAD NAO SOBROU NADA!!!!!");
+                break;
+            } else {
+                System.out.println("\nVocê moggou o betinha  " + inimigoAtual.getNome() + "!");
+            }
+        }
+
+
+        if (jogador.estaVivo()) {
+            System.out.println("\n🏆 Vc moggou todos os betinhas nunca sobra nada");
         }
 
         sc.close();
