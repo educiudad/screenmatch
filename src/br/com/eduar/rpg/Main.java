@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        Personagens personagen1 = new Personagens("Victor LOpes", 40, 100, 5);
+        Personagens personagen1 = new Personagens("Victor LOpes", 20, 100, 5);
         Personagens personagen2 = new Personagens("Joao gabriel", 20, 120, 1);
         Personagens personagen3 = new Personagens("Eduardo sonego", 15, 200, 3);
         Personagens personagen4 = new Personagens("Eduardo Ciudad", 300, 10000, 0);
